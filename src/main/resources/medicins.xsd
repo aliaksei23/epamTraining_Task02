@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema"
+        xsi:noNamespaceSchemaLocation="medicins.xsd">
+    <complexType name="medicine">
+        <sequence>
+            <element name="name">
+                <attribute name="name" type="string" use="required" default="without"/>
+                <simpleType>
+                    <restriction base="string">
+                        <minLength value="1"/>
+                        <maxLength value="unbounded"/>
+                    </restriction>
+                </simpleType>
+            </element>
+
+            <element name="producer">
+                <attribute name="producer" type="string" use="required" default="without"/>
+                <simpleType>
+                    <restriction base="string">
+                        <minLength value="1"/>
+                        <maxLength value="unbounded"/>
+                    </restriction>
+                </simpleType>
+            </element>
+
+            <element ref="group"/>
+            <element ref="expiration-date"/>
+
+            <complexType>
+                <sequence>
+                    <element name="analogs">
+                        <attribute name="analogs" type="string" use="optional" default="without"/>
+                        <simpleType>
+                            <restriction base="string">
+                                <minLength value="1"/>
+                                <maxLength value="unbounded"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                </sequence>
+            </complexType>
+
+            <complexType>
+                <sequence>
+                    <element ref="version" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+        </sequence>
+    </complexType>
+
+    <complexType name="importedMedicine">
+        <comlexContent>
+            <extension base="medicine">
+                <sequance>
+                    <element name="countryOfProduction" type="string"/>
+                </sequance>
+            </extension>
+            <attribute name="countryOfProduction" type="string" use="required" default="without"/>
+        </comlexContent>
+    </complexType>
+
+    <complexType name="localMedicine">
+        <comlexContent>
+            <extension base="medicine">
+                <sequance>
+                    <element name="regionOfProduction" type="string"/>
+                </sequance>
+            </extension>
+            <attribute name="regionOfProduction" type="string" use="required" default="without"/>
+        </comlexContent>
+    </complexType>
+
+    <element name="medicine" type="medicineType" abstract="false"/>
+
+    <element name="localMedicine" type="localMedicineType" substitutionGroup="medicine"/>
+
+    <element name="importedMedicine" type="importedMedicineType" substitutionGroup="medicine"/>
+
+    <element name="group">
+        <simpleType>
+            <restriction base="string">
+                <enumeration value="Antibiotics"/>
+                <enumeration value="Painkillers"/>
+                <enumeration value="Vitamins"/>
+                <enumeration value="Syrop"/>
+                <enumeration value="Powder"/>
+            </restriction>
+        </simpleType>
+    </element>
+
+    <element name="expiration-date">
+        <simpleType>
+            <restriction base="gYearMonth">
+                <pattern value="2[0-9][0-9][0-9]-(0[1-9])|(1[0-2])"/>
+            </restriction>
+        </simpleType>
+    </element>
+
+    <element name="version">
+        <complexType>
+            <sequence>
+                <element name="version">
+                    <attribute name="version" type="string" use="required" default="without"/>
+                    <simpleType>
+                        <restriction base="string">
+                            <minLength value="1"/>
+                            <maxLength value="unbounded"/>
+                        </restriction>
+                    </simpleType>
+                </element>
+                <element ref="certificate"/>
+                <element ref="medicinePackage"/>
+                <element ref="dosage"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="certificate">
+        <complexType>
+            <sequence>
+                <element name="number" type="positiveInteger"/>
+                <element ref="expiration-date"/>
+                <element ref="expiration-date"/>
+                <element name="registeringOrganization" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="medicinePackage">
+        <complexType>
+            <sequence>
+                <element name="typeOfPackaging" type="string"/>
+                <element name="amountInPackage" type="positiveInteger"/>
+                <element name="price" type="positiveInteger"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="Dosage">
+        <complexType>
+            <sequence>
+                <element name="drugDosage" type="positiveInteger"/>
+                <element name="price" type="frequencyOfAdmission"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>
