@@ -3,6 +3,7 @@ package com.company.task02.entity;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class Medicine {
 
@@ -11,19 +12,9 @@ public class Medicine {
     private Group group;
     private YearMonth expirationDate;
     private List<String> analogs;
-    private List<Version> version;
+    private List<Version> versions;
 
     public Medicine() {
-    }
-
-    public Medicine(String name, String producer, Group group, YearMonth expirationDate, List<Version> version) {
-        this.name = name;
-        this.producer = producer;
-        this.group = group;
-        this.expirationDate = expirationDate;
-        this.version = version;
-        analogs = new ArrayList<>();
-
     }
 
     public String getName() {
@@ -50,12 +41,12 @@ public class Medicine {
         this.group = group;
     }
 
-    public List<Version> getVersion() {
-        return version;
+    public List<Version> getVersions() {
+        return versions;
     }
 
-    public void setVersion(List<Version> version) {
-        this.version = version;
+    public void setVersions(List<Version> versions) {
+        this.versions = versions;
     }
 
     public List<String> getAnalogs() {
@@ -72,5 +63,17 @@ public class Medicine {
 
     public void setExpirationDate(YearMonth expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Medicine.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("producer='" + producer + "'")
+                .add("group=" + group)
+                .add("expirationDate=" + expirationDate)
+                .add("analogs=" + analogs)
+                .add("versions=" + versions)
+                .toString();
     }
 }

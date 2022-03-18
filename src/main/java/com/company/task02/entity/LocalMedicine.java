@@ -2,14 +2,13 @@ package com.company.task02.entity;
 
 import java.time.YearMonth;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class LocalMedicine extends Medicine {
 
     private String regionOfProduction;
 
-    public LocalMedicine(String name, String producer, Group group, YearMonth expirationDate, List<Version> version, String regionOfProduction) {
-        super(name, producer, group, expirationDate, version);
-        this.regionOfProduction = regionOfProduction;
+    public LocalMedicine() {
     }
 
     public String getRegionOfProduction() {
@@ -18,5 +17,12 @@ public class LocalMedicine extends Medicine {
 
     public void setRegionOfProduction(String regionOfProduction) {
         this.regionOfProduction = regionOfProduction;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", LocalMedicine.class.getSimpleName() + "[", "]")
+                .add("regionOfProduction='" + regionOfProduction + "'")
+                .toString();
     }
 }

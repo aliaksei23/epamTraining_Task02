@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medicines xmlns="http://www.example.org/medicines"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.example.org/medicines  medicines.xsd">
+
+    <medicine group="Antibiotics">
+        <name>sdaf</name>
+        <producer>sdaf</producer>
+        <expirationDate>2050-05</expirationDate>
+        <analogsList>asdfsdf sdaf sdfa</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>sdaf</versionOfProduction>
+                <certificate>
+                    <number>123</number>
+                    <issueDate>2020-05</issueDate>
+                    <certificateExpirationDate>2024-08</certificateExpirationDate>
+                    <registeringOrganization>asdf</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>sfdg</typeOfPackaging>
+                    <amountInPackage>12</amountInPackage>
+                    <price>78</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+            <version>
+                <versionOfProduction>AFAG</versionOfProduction>
+                <certificate>
+                    <number>456</number>
+                    <issueDate>2021-05</issueDate>
+                    <certificateExpirationDate>2023-08</certificateExpirationDate>
+                    <registeringOrganization>AFGASG</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>ASGFASG</typeOfPackaging>
+                    <amountInPackage>12</amountInPackage>
+                    <price>78</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>500</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+    <localMedicine group="Painkillers">
+        <name>sdaf</name>
+        <producer>sdaf</producer>
+        <expirationDate>2050-05</expirationDate>
+        <analogsList>asdfsdf sdaf sdfa</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>sdaf</versionOfProduction>
+                <certificate>
+                    <number>123</number>
+                    <issueDate>2020-05</issueDate>
+                    <certificateExpirationDate>2024-08</certificateExpirationDate>
+                    <registeringOrganization>asdf</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>sfdg</typeOfPackaging>
+                    <amountInPackage>12</amountInPackage>
+                    <price>78</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+            <version>
+                <versionOfProduction>AFAG</versionOfProduction>
+                <certificate>
+                    <number>456</number>
+                    <issueDate>2021-05</issueDate>
+                    <certificateExpirationDate>2023-08</certificateExpirationDate>
+                    <registeringOrganization>AFGASG</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>ASGFASG</typeOfPackaging>
+                    <amountInPackage>12</amountInPackage>
+                    <price>78</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>500</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>ASF</regionOfProduction>
+    </localMedicine>
+</medicines>
+
+

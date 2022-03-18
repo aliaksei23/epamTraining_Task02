@@ -14,6 +14,9 @@ public class MedicinePackage {
         this.price = price;
     }
 
+    public MedicinePackage() {
+    }
+
     public String getTypeOfPackaging() {
         return typeOfPackaging;
     }

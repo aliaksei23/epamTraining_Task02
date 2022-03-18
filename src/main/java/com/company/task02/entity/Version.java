@@ -4,24 +4,27 @@ import java.util.StringJoiner;
 
 public class Version {
 
-    private String version;
-    private Certificate certificate;
-    private MedicinePackage medicinePackage;
-    private Dosage dosage;
+    private String versionOfProduction;
+    private Certificate certificate = new Certificate();
+    private MedicinePackage medicinePackage = new MedicinePackage();
+    private Dosage dosage = new Dosage();
 
-    public Version(String version, Certificate certificate, MedicinePackage MedicinePackage, Dosage dosage) {
-        this.version = version;
+    public Version(String versionOfProduction, Certificate certificate, MedicinePackage MedicinePackage, Dosage dosage) {
+        this.versionOfProduction = versionOfProduction;
         this.certificate = certificate;
         this.medicinePackage = MedicinePackage;
         this.dosage = dosage;
     }
 
-    public String getVersion() {
-        return version;
+    public Version() {
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public String getVersionOfProduction() {
+        return versionOfProduction;
+    }
+
+    public void setVersionOfProduction(String versionOfProduction) {
+        this.versionOfProduction = versionOfProduction;
     }
 
     public Certificate getCertificate() {
@@ -51,7 +54,7 @@ public class Version {
     @Override
     public String toString() {
         return new StringJoiner(", ", Version.class.getSimpleName() + "[", "]")
-                .add("version='" + version + "'")
+                .add("version='" + versionOfProduction + "'")
                 .add("certificate=" + certificate)
                 .add("aMedicinePackage=" + medicinePackage)
                 .add("dosage=" + dosage)
@@ -65,7 +68,7 @@ public class Version {
 
         Version version1 = (Version) o;
 
-        if (!getVersion().equals(version1.getVersion())) return false;
+        if (!getVersionOfProduction().equals(version1.getVersionOfProduction())) return false;
         if (!getCertificate().equals(version1.getCertificate())) return false;
         if (!getMedicinePackage().equals(version1.getMedicinePackage())) return false;
         return getDosage().equals(version1.getDosage());
@@ -73,7 +76,7 @@ public class Version {
 
     @Override
     public int hashCode() {
-        int result = getVersion().hashCode();
+        int result = getVersionOfProduction().hashCode();
         result = 31 * result + getCertificate().hashCode();
         result = 31 * result + getMedicinePackage().hashCode();
         result = 31 * result + getDosage().hashCode();

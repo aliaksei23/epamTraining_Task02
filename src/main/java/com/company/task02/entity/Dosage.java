@@ -4,19 +4,22 @@ import java.util.StringJoiner;
 
 public class Dosage {
 
-    private double drugDosage;
+    private int drugDosage;
     private int frequencyOfAdmission;
 
-    public Dosage(double drugDosage, int frequencyOfAdmission) {
+    public Dosage(int drugDosage, int frequencyOfAdmission) {
         this.drugDosage = drugDosage;
         this.frequencyOfAdmission = frequencyOfAdmission;
+    }
+
+    public Dosage() {
     }
 
     public double getDrugDosage() {
         return drugDosage;
     }
 
-    public void setDrugDosage(double drugDosage) {
+    public void setDrugDosage(int drugDosage) {
         this.drugDosage = drugDosage;
     }
 

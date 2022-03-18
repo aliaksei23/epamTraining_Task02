@@ -1,4 +1,4 @@
-package com.company.task02.error;
+package com.company.task02.validator.error;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
