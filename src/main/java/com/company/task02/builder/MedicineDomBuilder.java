@@ -1,5 +1,6 @@
 package com.company.task02.builder;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.YearMonth;
 import java.util.*;
@@ -14,7 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class MedicineDomBuilder {
+public class MedicineDomBuilder { //todo
 
     private Set<Medicine> medicineSet;
     private DocumentBuilder documentBuilder;
@@ -36,7 +37,8 @@ public class MedicineDomBuilder {
     public void buildSetMedicine(String filename) {
         Document document;
         try {
-            document = documentBuilder.parse(filename);
+            document = documentBuilder.parse(new File(filename));
+            document.getDocumentElement().normalize();
             Element root = document.getDocumentElement();
             NodeList medList = root.getElementsByTagName(MedicineXMLTag.MEDICINE.getValue());
             for (int i = 0; i < medList.getLength(); i++) {
@@ -148,10 +150,4 @@ public class MedicineDomBuilder {
         return analogsList;
     }
 
-//    private List<String> getAnalogsContext(Element element) {
-//        List<String> analogsList = new ArrayList<>();
-//        String analogs = getElementTextContent(element, Arrays.toString(MedicineXMLTag.ANALOGSLIST.getValue().split(" ")));
-//        analogsList.add(analogs);
-//        return analogsList;
-//    }
 }

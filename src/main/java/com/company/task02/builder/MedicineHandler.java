@@ -43,19 +43,19 @@ public class MedicineHandler extends DefaultHandler {
         if (allMedicines.contains(xmlTag)) {
             if (xmlTag == MEDICINE) {
                 this.currentMed = new Medicine();
-                String id = IDINPHARMACY.getValue();
-                int idIndex = attrs.getIndex(id);
-                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
+//                String id = IDINPHARMACY.getValue();
+//                int idIndex = attrs.getIndex(id);
+//                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
             } else if (xmlTag == IMPORTEDMEDICINE) {
                 this.currentMed = new ImportedMedicine();
-                String id = IDINPHARMACY.getValue();
-                int idIndex = attrs.getIndex(id);
-                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
+//                String id = IDINPHARMACY.getValue();
+//                int idIndex = attrs.getIndex(id);
+//                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
             } else if (xmlTag == LOCALMEDICINE) {
                 this.currentMed = new LocalMedicine();
-                String id = IDINPHARMACY.getValue();
-                int idIndex = attrs.getIndex(id);
-                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
+//                String id = IDINPHARMACY.getValue();
+//                int idIndex = attrs.getIndex(id);
+//                currentMed.setIdInPharmacy(attrs.getValue(idIndex));
             }
             this.currentMed.setGroup(Group.getGroup(attrs.getValue(0)));
         } else {

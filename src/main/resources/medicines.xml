@@ -47,105 +47,105 @@
             </version>
         </versions>
     </medicine>
-<!--    <localMedicine group="Antibiotics">-->
-<!--        <name>Amoksiklav</name>-->
-<!--        <producer>LocalOrganization</producer>-->
-<!--        <expirationDate>2050-05</expirationDate>-->
-<!--        <analogsList>Flemoxin Tsiprolet</analogsList>-->
-<!--        <versions>-->
-<!--            <version>-->
-<!--                <versionOfProduction>Tablets</versionOfProduction>-->
-<!--                <certificate>-->
-<!--                    <number>789</number>-->
-<!--                    <issueDate>2020-05</issueDate>-->
-<!--                    <certificateExpirationDate>2024-08</certificateExpirationDate>-->
-<!--                    <registeringOrganization>Organization3</registeringOrganization>-->
-<!--                </certificate>-->
-<!--                <medicinePackage>-->
-<!--                    <typeOfPackaging>sfdg</typeOfPackaging>-->
-<!--                    <amountInPackage>12</amountInPackage>-->
-<!--                    <price>78</price>-->
-<!--                </medicinePackage>-->
-<!--                <dosage>-->
-<!--                    <drugDosage>400</drugDosage>-->
-<!--                    <frequencyOfAdmission>3</frequencyOfAdmission>-->
-<!--                </dosage>-->
-<!--            </version>-->
-<!--            <version>-->
-<!--                <versionOfProduction>Plastins</versionOfProduction>-->
-<!--                <certificate>-->
-<!--                    <number>456</number>-->
-<!--                    <issueDate>2021-05</issueDate>-->
-<!--                    <certificateExpirationDate>2023-08</certificateExpirationDate>-->
-<!--                    <registeringOrganization>Organization3</registeringOrganization>-->
-<!--                </certificate>-->
-<!--                <medicinePackage>-->
-<!--                    <typeOfPackaging>Plastins</typeOfPackaging>-->
-<!--                    <amountInPackage>20</amountInPackage>-->
-<!--                    <price>7</price>-->
-<!--                </medicinePackage>-->
-<!--                <dosage>-->
-<!--                    <drugDosage>100</drugDosage>-->
-<!--                    <frequencyOfAdmission>3</frequencyOfAdmission>-->
-<!--                </dosage>-->
-<!--            </version>-->
-<!--        </versions>-->
-<!--        <regionOfProduction>LocalRegion</regionOfProduction>-->
-<!--    </localMedicine>-->
-<!--    <importedMedicine group="Vitamins">-->
-<!--        <name>AlfaVit Energy</name>-->
-<!--        <producer>ForeignerOrganization</producer>-->
-<!--        <expirationDate>2027-08</expirationDate>-->
-<!--        <analogsList>Biorhythm Makrovit</analogsList>-->
-<!--        <versions>-->
-<!--            <version>-->
-<!--                <versionOfProduction>Pills</versionOfProduction>-->
-<!--                <certificate>-->
-<!--                    <number>879</number>-->
-<!--                    <issueDate>2021-08</issueDate>-->
-<!--                    <certificateExpirationDate>2028-05</certificateExpirationDate>-->
-<!--                    <registeringOrganization>Organization4</registeringOrganization>-->
-<!--                </certificate>-->
-<!--                <medicinePackage>-->
-<!--                    <typeOfPackaging>vial</typeOfPackaging>-->
-<!--                    <amountInPackage>50</amountInPackage>-->
-<!--                    <price>12.8</price>-->
-<!--                </medicinePackage>-->
-<!--                <dosage>-->
-<!--                    <drugDosage>150</drugDosage>-->
-<!--                    <frequencyOfAdmission>1</frequencyOfAdmission>-->
-<!--                </dosage>-->
-<!--            </version>-->
-<!--        </versions>-->
-<!--        <countryOfProduction>ForeignerCountry</countryOfProduction>-->
-<!--    </importedMedicine>-->
-<!--    <importedMedicine group="Vitamins">-->
-<!--        <name>Biorhythm</name>-->
-<!--        <producer>ForeignerOrganization</producer>-->
-<!--        <expirationDate>2027-08</expirationDate>-->
-<!--        <analogsList>AlfaVit Energy Makrovit</analogsList>-->
-<!--        <versions>-->
-<!--            <version>-->
-<!--                <versionOfProduction>Pills</versionOfProduction>-->
-<!--                <certificate>-->
-<!--                    <number>89</number>-->
-<!--                    <issueDate>2021-10</issueDate>-->
-<!--                    <certificateExpirationDate>2028-11</certificateExpirationDate>-->
-<!--                    <registeringOrganization>Organization5</registeringOrganization>-->
-<!--                </certificate>-->
-<!--                <medicinePackage>-->
-<!--                    <typeOfPackaging>vial</typeOfPackaging>-->
-<!--                    <amountInPackage>100</amountInPackage>-->
-<!--                    <price>42.8</price>-->
-<!--                </medicinePackage>-->
-<!--                <dosage>-->
-<!--                    <drugDosage>200</drugDosage>-->
-<!--                    <frequencyOfAdmission>2</frequencyOfAdmission>-->
-<!--                </dosage>-->
-<!--            </version>-->
-<!--        </versions>-->
-<!--        <countryOfProduction>ForeignerCountry</countryOfProduction>-->
-<!--    </importedMedicine>-->
+    <localMedicine group="Antibiotics">
+        <name>Amoksiklav</name>
+        <producer>LocalOrganization</producer>
+        <expirationDate>2050-05</expirationDate>
+        <analogsList>Flemoxin Tsiprolet</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Tablets</versionOfProduction>
+                <certificate>
+                    <number>789</number>
+                    <issueDate>2020-05</issueDate>
+                    <certificateExpirationDate>2024-08</certificateExpirationDate>
+                    <registeringOrganization>Organization3</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>sfdg</typeOfPackaging>
+                    <amountInPackage>12</amountInPackage>
+                    <price>78</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+            <version>
+                <versionOfProduction>Plastins</versionOfProduction>
+                <certificate>
+                    <number>456</number>
+                    <issueDate>2021-05</issueDate>
+                    <certificateExpirationDate>2023-08</certificateExpirationDate>
+                    <registeringOrganization>Organization3</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>Plastins</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>7</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>100</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion</regionOfProduction>
+    </localMedicine>
+    <importedMedicine group="Vitamins">
+        <name>AlfaVit Energy</name>
+        <producer>ForeignerOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>Biorhythm Makrovit</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>879</number>
+                    <issueDate>2021-08</issueDate>
+                    <certificateExpirationDate>2028-05</certificateExpirationDate>
+                    <registeringOrganization>Organization4</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>50</amountInPackage>
+                    <price>12.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>150</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry</countryOfProduction>
+    </importedMedicine>
+    <importedMedicine group="Vitamins">
+        <name>Biorhythm</name>
+        <producer>ForeignerOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>AlfaVit Energy Makrovit</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>89</number>
+                    <issueDate>2021-10</issueDate>
+                    <certificateExpirationDate>2028-11</certificateExpirationDate>
+                    <registeringOrganization>Organization5</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>100</amountInPackage>
+                    <price>42.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry</countryOfProduction>
+    </importedMedicine>
 </medicines>
 
 
