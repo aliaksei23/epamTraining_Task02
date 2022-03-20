@@ -7,6 +7,7 @@ import java.util.StringJoiner;
 
 public class Medicine {
 
+    private String idInPharmacy;
     private String name;
     private String producer;
     private Group group;
@@ -65,9 +66,18 @@ public class Medicine {
         this.expirationDate = expirationDate;
     }
 
+    public String getIdInPharmacy() {
+        return idInPharmacy;
+    }
+
+    public void setIdInPharmacy(String idInPharmacy) {
+        this.idInPharmacy = idInPharmacy;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Medicine.class.getSimpleName() + "[", "]")
+                .add("idInPharmacy='" + idInPharmacy + "'")
                 .add("name='" + name + "'")
                 .add("producer='" + producer + "'")
                 .add("group=" + group)

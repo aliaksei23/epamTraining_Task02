@@ -3,95 +3,149 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://www.example.org/medicines  medicines.xsd">
 
-    <medicine group="Antibiotics">
-        <name>sdaf</name>
-        <producer>sdaf</producer>
+    <medicine group="Painkillers" idInPharmacy="P456">
+        <name>Analgin</name>
+        <producer>BelMed</producer>
         <expirationDate>2050-05</expirationDate>
-        <analogsList>asdfsdf sdaf sdfa</analogsList>
+        <analogsList>Xefocam Ketonal Aspirin</analogsList>
         <versions>
             <version>
-                <versionOfProduction>sdaf</versionOfProduction>
+                <versionOfProduction>Tablets</versionOfProduction>
                 <certificate>
                     <number>123</number>
                     <issueDate>2020-05</issueDate>
                     <certificateExpirationDate>2024-08</certificateExpirationDate>
-                    <registeringOrganization>asdf</registeringOrganization>
+                    <registeringOrganization>Organization1</registeringOrganization>
                 </certificate>
                 <medicinePackage>
-                    <typeOfPackaging>sfdg</typeOfPackaging>
-                    <amountInPackage>12</amountInPackage>
-                    <price>78</price>
+                    <typeOfPackaging>Plastins</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>1.4</price>
                 </medicinePackage>
                 <dosage>
-                    <drugDosage>400</drugDosage>
+                    <drugDosage>200</drugDosage>
                     <frequencyOfAdmission>3</frequencyOfAdmission>
                 </dosage>
             </version>
             <version>
-                <versionOfProduction>AFAG</versionOfProduction>
+                <versionOfProduction>Tablets</versionOfProduction>
                 <certificate>
                     <number>456</number>
                     <issueDate>2021-05</issueDate>
                     <certificateExpirationDate>2023-08</certificateExpirationDate>
-                    <registeringOrganization>AFGASG</registeringOrganization>
+                    <registeringOrganization>Organization2</registeringOrganization>
                 </certificate>
                 <medicinePackage>
-                    <typeOfPackaging>ASGFASG</typeOfPackaging>
-                    <amountInPackage>12</amountInPackage>
-                    <price>78</price>
+                    <typeOfPackaging>Plastins</typeOfPackaging>
+                    <amountInPackage>40</amountInPackage>
+                    <price>2.8</price>
                 </medicinePackage>
                 <dosage>
                     <drugDosage>500</drugDosage>
-                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
                 </dosage>
             </version>
         </versions>
     </medicine>
-    <localMedicine group="Painkillers">
-        <name>sdaf</name>
-        <producer>sdaf</producer>
-        <expirationDate>2050-05</expirationDate>
-        <analogsList>asdfsdf sdaf sdfa</analogsList>
-        <versions>
-            <version>
-                <versionOfProduction>sdaf</versionOfProduction>
-                <certificate>
-                    <number>123</number>
-                    <issueDate>2020-05</issueDate>
-                    <certificateExpirationDate>2024-08</certificateExpirationDate>
-                    <registeringOrganization>asdf</registeringOrganization>
-                </certificate>
-                <medicinePackage>
-                    <typeOfPackaging>sfdg</typeOfPackaging>
-                    <amountInPackage>12</amountInPackage>
-                    <price>78</price>
-                </medicinePackage>
-                <dosage>
-                    <drugDosage>400</drugDosage>
-                    <frequencyOfAdmission>3</frequencyOfAdmission>
-                </dosage>
-            </version>
-            <version>
-                <versionOfProduction>AFAG</versionOfProduction>
-                <certificate>
-                    <number>456</number>
-                    <issueDate>2021-05</issueDate>
-                    <certificateExpirationDate>2023-08</certificateExpirationDate>
-                    <registeringOrganization>AFGASG</registeringOrganization>
-                </certificate>
-                <medicinePackage>
-                    <typeOfPackaging>ASGFASG</typeOfPackaging>
-                    <amountInPackage>12</amountInPackage>
-                    <price>78</price>
-                </medicinePackage>
-                <dosage>
-                    <drugDosage>500</drugDosage>
-                    <frequencyOfAdmission>3</frequencyOfAdmission>
-                </dosage>
-            </version>
-        </versions>
-        <regionOfProduction>ASF</regionOfProduction>
-    </localMedicine>
+<!--    <localMedicine group="Antibiotics">-->
+<!--        <name>Amoksiklav</name>-->
+<!--        <producer>LocalOrganization</producer>-->
+<!--        <expirationDate>2050-05</expirationDate>-->
+<!--        <analogsList>Flemoxin Tsiprolet</analogsList>-->
+<!--        <versions>-->
+<!--            <version>-->
+<!--                <versionOfProduction>Tablets</versionOfProduction>-->
+<!--                <certificate>-->
+<!--                    <number>789</number>-->
+<!--                    <issueDate>2020-05</issueDate>-->
+<!--                    <certificateExpirationDate>2024-08</certificateExpirationDate>-->
+<!--                    <registeringOrganization>Organization3</registeringOrganization>-->
+<!--                </certificate>-->
+<!--                <medicinePackage>-->
+<!--                    <typeOfPackaging>sfdg</typeOfPackaging>-->
+<!--                    <amountInPackage>12</amountInPackage>-->
+<!--                    <price>78</price>-->
+<!--                </medicinePackage>-->
+<!--                <dosage>-->
+<!--                    <drugDosage>400</drugDosage>-->
+<!--                    <frequencyOfAdmission>3</frequencyOfAdmission>-->
+<!--                </dosage>-->
+<!--            </version>-->
+<!--            <version>-->
+<!--                <versionOfProduction>Plastins</versionOfProduction>-->
+<!--                <certificate>-->
+<!--                    <number>456</number>-->
+<!--                    <issueDate>2021-05</issueDate>-->
+<!--                    <certificateExpirationDate>2023-08</certificateExpirationDate>-->
+<!--                    <registeringOrganization>Organization3</registeringOrganization>-->
+<!--                </certificate>-->
+<!--                <medicinePackage>-->
+<!--                    <typeOfPackaging>Plastins</typeOfPackaging>-->
+<!--                    <amountInPackage>20</amountInPackage>-->
+<!--                    <price>7</price>-->
+<!--                </medicinePackage>-->
+<!--                <dosage>-->
+<!--                    <drugDosage>100</drugDosage>-->
+<!--                    <frequencyOfAdmission>3</frequencyOfAdmission>-->
+<!--                </dosage>-->
+<!--            </version>-->
+<!--        </versions>-->
+<!--        <regionOfProduction>LocalRegion</regionOfProduction>-->
+<!--    </localMedicine>-->
+<!--    <importedMedicine group="Vitamins">-->
+<!--        <name>AlfaVit Energy</name>-->
+<!--        <producer>ForeignerOrganization</producer>-->
+<!--        <expirationDate>2027-08</expirationDate>-->
+<!--        <analogsList>Biorhythm Makrovit</analogsList>-->
+<!--        <versions>-->
+<!--            <version>-->
+<!--                <versionOfProduction>Pills</versionOfProduction>-->
+<!--                <certificate>-->
+<!--                    <number>879</number>-->
+<!--                    <issueDate>2021-08</issueDate>-->
+<!--                    <certificateExpirationDate>2028-05</certificateExpirationDate>-->
+<!--                    <registeringOrganization>Organization4</registeringOrganization>-->
+<!--                </certificate>-->
+<!--                <medicinePackage>-->
+<!--                    <typeOfPackaging>vial</typeOfPackaging>-->
+<!--                    <amountInPackage>50</amountInPackage>-->
+<!--                    <price>12.8</price>-->
+<!--                </medicinePackage>-->
+<!--                <dosage>-->
+<!--                    <drugDosage>150</drugDosage>-->
+<!--                    <frequencyOfAdmission>1</frequencyOfAdmission>-->
+<!--                </dosage>-->
+<!--            </version>-->
+<!--        </versions>-->
+<!--        <countryOfProduction>ForeignerCountry</countryOfProduction>-->
+<!--    </importedMedicine>-->
+<!--    <importedMedicine group="Vitamins">-->
+<!--        <name>Biorhythm</name>-->
+<!--        <producer>ForeignerOrganization</producer>-->
+<!--        <expirationDate>2027-08</expirationDate>-->
+<!--        <analogsList>AlfaVit Energy Makrovit</analogsList>-->
+<!--        <versions>-->
+<!--            <version>-->
+<!--                <versionOfProduction>Pills</versionOfProduction>-->
+<!--                <certificate>-->
+<!--                    <number>89</number>-->
+<!--                    <issueDate>2021-10</issueDate>-->
+<!--                    <certificateExpirationDate>2028-11</certificateExpirationDate>-->
+<!--                    <registeringOrganization>Organization5</registeringOrganization>-->
+<!--                </certificate>-->
+<!--                <medicinePackage>-->
+<!--                    <typeOfPackaging>vial</typeOfPackaging>-->
+<!--                    <amountInPackage>100</amountInPackage>-->
+<!--                    <price>42.8</price>-->
+<!--                </medicinePackage>-->
+<!--                <dosage>-->
+<!--                    <drugDosage>200</drugDosage>-->
+<!--                    <frequencyOfAdmission>2</frequencyOfAdmission>-->
+<!--                </dosage>-->
+<!--            </version>-->
+<!--        </versions>-->
+<!--        <countryOfProduction>ForeignerCountry</countryOfProduction>-->
+<!--    </importedMedicine>-->
 </medicines>
 
 

@@ -5,8 +5,8 @@ public enum Group {
     ANTIBIOTICS("Antibiotics"),
     PAINKILLERS("Painkillers"),
     VITAMINS("Vitamins"),
-    SYROP("Syrop"),
-    POWDER("Powder");
+    Antiviral("Antiviral"),
+    ANTIHISTAMINES("Antihistamines");
 
     private String name;
 
@@ -25,9 +25,5 @@ public enum Group {
             }
         }
         throw new IllegalArgumentException("no suitable group found for name " + name);// todo
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

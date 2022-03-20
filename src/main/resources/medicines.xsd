@@ -36,11 +36,12 @@
                     <enumeration value="Antibiotics"/>
                     <enumeration value="Painkillers"/>
                     <enumeration value="Vitamins"/>
-                    <enumeration value="Syrop"/>
-                    <enumeration value="Powder"/>
+                    <enumeration value="Antiviral"/>
+                    <enumeration value="Antihistamines"/>
                 </restriction>
             </simpleType>
         </attribute>
+        <attribute name="idInPharmacy" type="ID" default="Q00"/>
     </complexType>
 
     <complexType name="Version">

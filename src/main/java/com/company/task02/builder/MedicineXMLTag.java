@@ -10,6 +10,7 @@ public enum MedicineXMLTag {
     REGIONOFPRODUCTION("regionOfProduction"),
     COUNTRYOFPRODUCTION("countryOfProduction"),
     GROUP("group"),
+    IDINPHARMACY("idInPharmacy"),
     ANALOGSLIST("analogsList"),
     PRODUCER("producer"),
     EXPIRATIONDATE("expirationDate"),
@@ -39,5 +40,14 @@ public enum MedicineXMLTag {
 
     public String getValue() {
         return value;
+    }
+
+    public static MedicineXMLTag getMedicineXMLTag(String name)  {
+        for (MedicineXMLTag tag : MedicineXMLTag.values()) {
+            if (name.equals(tag.getValue())) {
+                return tag;
+            }
+        }
+        throw new IllegalArgumentException("Unknown tag <" + name + ">");
     }
 }
