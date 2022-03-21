@@ -5,14 +5,9 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class LocalMedicine extends Medicine {
-    private Medicine medicine;
     private String regionOfProduction;
 
     public LocalMedicine() {
-    }
-
-    public LocalMedicine(Medicine medicine) {
-        this.medicine = medicine;
     }
 
     public String getRegionOfProduction() {
@@ -26,6 +21,7 @@ public class LocalMedicine extends Medicine {
     @Override
     public String toString() {
         return new StringJoiner(", ", LocalMedicine.class.getSimpleName() + "[", "]")
+                .add(super.toString())
                 .add("regionOfProduction='" + regionOfProduction + "'")
                 .toString();
     }

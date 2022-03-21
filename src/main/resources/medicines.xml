@@ -3,7 +3,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://www.example.org/medicines  medicines.xsd">
 
-    <medicine group="Painkillers" idInPharmacy="P456">
+    <medicine group="Painkillers" idInPharmacy="m01">
         <name>Analgin</name>
         <producer>BelMed</producer>
         <expirationDate>2050-05</expirationDate>
@@ -47,7 +47,7 @@
             </version>
         </versions>
     </medicine>
-    <localMedicine group="Antibiotics">
+    <localMedicine group="Antibiotics" idInPharmacy="lm02">
         <name>Amoksiklav</name>
         <producer>LocalOrganization</producer>
         <expirationDate>2050-05</expirationDate>
@@ -92,7 +92,7 @@
         </versions>
         <regionOfProduction>LocalRegion</regionOfProduction>
     </localMedicine>
-    <importedMedicine group="Vitamins">
+    <importedMedicine group="Vitamins" idInPharmacy="im03">
         <name>AlfaVit Energy</name>
         <producer>ForeignerOrganization</producer>
         <expirationDate>2027-08</expirationDate>
@@ -119,7 +119,7 @@
         </versions>
         <countryOfProduction>ForeignerCountry</countryOfProduction>
     </importedMedicine>
-    <importedMedicine group="Vitamins">
+    <importedMedicine group="Vitamins" idInPharmacy="im04">
         <name>Biorhythm</name>
         <producer>ForeignerOrganization</producer>
         <expirationDate>2027-08</expirationDate>

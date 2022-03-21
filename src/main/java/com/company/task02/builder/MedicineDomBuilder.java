@@ -15,7 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class MedicineDomBuilder { //todo
+public class MedicineDomBuilder {
 
     private Set<Medicine> medicineSet;
     private DocumentBuilder documentBuilder;
@@ -41,9 +41,21 @@ public class MedicineDomBuilder { //todo
             document.getDocumentElement().normalize();
             Element root = document.getDocumentElement();
             NodeList medList = root.getElementsByTagName(MedicineXMLTag.MEDICINE.getValue());
+            NodeList localMedList = root.getElementsByTagName(MedicineXMLTag.LOCALMEDICINE.getValue());
+            NodeList importedMedList = root.getElementsByTagName(MedicineXMLTag.IMPORTEDMEDICINE.getValue());
             for (int i = 0; i < medList.getLength(); i++) {
                 Element medElement = (Element) medList.item(i);
                 Medicine medicine = buildMedicine(medElement);
+                medicineSet.add(medicine);
+            }
+            for (int i = 0; i < localMedList.getLength(); i++) {
+                Element medElement = (Element) localMedList.item(i);
+                LocalMedicine medicine = buildLocalMedicine(medElement);
+                medicineSet.add(medicine);
+            }
+            for (int i = 0; i < importedMedList.getLength(); i++) {
+                Element medElement = (Element) importedMedList.item(i);
+                ImportedMedicine medicine = buildImportedMedicine(medElement);
                 medicineSet.add(medicine);
             }
         } catch (IOException | SAXException e) {
@@ -51,16 +63,42 @@ public class MedicineDomBuilder { //todo
         }
     }
 
-    private Medicine buildMedicine(Element medicineElement) {
+    private Medicine buildMedicine( Element medicineElement) {
         Medicine medicine = new Medicine();
-
-        medicine.setGroup(getElementGroupValue(medicineElement));
+        medicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
+        medicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
         medicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
         medicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
         medicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
         medicine.setAnalogs(getAnalogsContext(medicineElement));
         medicine.setVersions(buildVersionsList(medicineElement));
         return medicine;
+    }
+
+    private LocalMedicine buildLocalMedicine (Element medicineElement){
+        LocalMedicine localMedicine = new LocalMedicine();
+        localMedicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
+        localMedicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
+        localMedicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
+        localMedicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
+        localMedicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
+        localMedicine.setAnalogs(getAnalogsContext(medicineElement));
+        localMedicine.setVersions(buildVersionsList(medicineElement));
+        localMedicine.setRegionOfProduction(getElementTextContent(medicineElement, MedicineXMLTag.REGIONOFPRODUCTION.getValue()));
+        return localMedicine;
+    }
+
+    private ImportedMedicine buildImportedMedicine (Element medicineElement){
+        ImportedMedicine importedMedicine = new ImportedMedicine();
+        importedMedicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
+        importedMedicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
+        importedMedicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
+        importedMedicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
+        importedMedicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
+        importedMedicine.setAnalogs(getAnalogsContext(medicineElement));
+        importedMedicine.setVersions(buildVersionsList(medicineElement));
+        importedMedicine.setCountryOfProduction(getElementTextContent(medicineElement, MedicineXMLTag.COUNTRYOFPRODUCTION.getValue()));
+        return importedMedicine;
     }
 
     private List<Version> buildVersionsList(Element element) {
@@ -106,7 +144,7 @@ public class MedicineDomBuilder { //todo
     }
 
     private Dosage buildDosage(Element element) {
-        NodeList dosageList = element.getElementsByTagName(MedicineXMLTag.MEDICINEPACKAGE.getValue());
+        NodeList dosageList = element.getElementsByTagName(MedicineXMLTag.DOSAGE.getValue());
         Element dosageElement = (Element) dosageList.item(0);
         Dosage dosage = new Dosage();
         dosage.setDrugDosage(getElementIntContent(dosageElement, MedicineXMLTag.DRUGDOSAGE.getValue()));
@@ -135,19 +173,13 @@ public class MedicineDomBuilder { //todo
         return YearMonth.parse(yearMonthString);
     }
 
-    private Group getElementGroupValue(Element element) {
-        String group = getElementTextContent(element, MedicineXMLTag.GROUP.getValue());
-        return Group.getGroup(group);
-    }
-
     private List<String> getAnalogsContext(Element element) {
         NodeList nodeList = element.getElementsByTagName(MedicineXMLTag.ANALOGSLIST.getValue());
         Element analogsNode = (Element) nodeList.item(0);
         List<String> analogsList = new ArrayList<>();
         for (int i = 0; i < nodeList.getLength(); i++) {
-            analogsList.add(analogsNode.getNodeName());
+            analogsList.add(analogsNode.getTextContent());
         }
         return analogsList;
     }
-
 }

@@ -22,6 +22,7 @@ public class ImportedMedicine extends Medicine {
     @Override
     public String toString() {
         return new StringJoiner(", ", ImportedMedicine.class.getSimpleName() + "[", "]")
+                .add(super.toString())
                 .add("countryOfProduction='" + countryOfProduction + "'")
                 .toString();
     }
