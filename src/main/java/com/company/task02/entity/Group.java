@@ -6,7 +6,8 @@ public enum Group {
     PAINKILLERS("Painkillers"),
     VITAMINS("Vitamins"),
     Antiviral("Antiviral"),
-    ANTIHISTAMINES("Antihistamines");
+    ANTIHISTAMINES("Antihistamines"),
+    GROUP_REQUIRED ("Group required");
 
     private String name;
 

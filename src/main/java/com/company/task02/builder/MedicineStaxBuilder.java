@@ -1,10 +1,10 @@
 package com.company.task02.builder;
 
+import com.company.task02.builder.tegs.MedicineXMLTag;
 import com.company.task02.entity.*;
+import com.company.task02.validator.XmlValidator;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.YearMonth;
 import java.util.*;
@@ -13,7 +13,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import static com.company.task02.builder.MedicineXMLTag.*;
+import static com.company.task02.builder.tegs.MedicineXMLTag.*;
 
 public class MedicineStaxBuilder {
 
@@ -30,146 +30,91 @@ public class MedicineStaxBuilder {
     }
 
     public void buildSetMedicines(String filename) {
-        XMLStreamReader reader;
+        if (XmlValidator.xmlValidator()) {
+            XMLStreamReader reader;
+            String name;
+            try (FileInputStream inputStream = new FileInputStream(filename)) {
+                reader = inputFactory.createXMLStreamReader(inputStream);
+                while (reader.hasNext()) {
+                    int type = reader.next();
+                    if (type == XMLStreamConstants.START_ELEMENT) {
+                        name = reader.getLocalName();
+                        if (name.equals(MEDICINE.getValue())) {
+                            Medicine medicine = buildMedicine(new Medicine(), reader);
+                            medicines.add(medicine);
+                        }
+                        if (name.equalsIgnoreCase(LOCALMEDICINE.getValue())) {
+                            Medicine medicine = buildMedicine(new LocalMedicine(), reader);
+                            medicines.add(medicine);
+                        }
+                        if (name.equalsIgnoreCase(IMPORTEDMEDICINE.getValue())) {
+                            Medicine medicine = buildMedicine(new ImportedMedicine(), reader);
+                            medicines.add(medicine);
+                        }
+                    }
+                }
+            } catch (XMLStreamException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private Medicine buildMedicine(Medicine medicine, XMLStreamReader reader) throws XMLStreamException {
+        medicine.setGroup(Group.getGroup(reader.getAttributeValue(null, GROUP.getValue())));
+        medicine.setIdInPharmacy(reader.getAttributeValue(null, IDINPHARMACY.getValue()));
         String name;
-        try (FileInputStream inputStream = new FileInputStream(new File(filename))) {
-            reader = inputFactory.createXMLStreamReader(inputStream);
-            while (reader.hasNext()) {
-                int type = reader.next();
-                if (type == XMLStreamConstants.START_ELEMENT) {
+        while (reader.hasNext()) {
+            int type = reader.next();
+            switch (type) {
+                case XMLStreamConstants.START_ELEMENT -> {
                     name = reader.getLocalName();
-                    if (name.equals(MEDICINE.getValue())) {
-                        Medicine medicine = buildMedicine(reader);
-                        medicines.add(medicine);
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
+                    switch (tag) {
+                        case NAME -> medicine.setName(getXMLText(reader));
+                        case PRODUCER -> medicine.setProducer(getXMLText(reader));
+                        case EXPIRATIONDATE -> medicine.setExpirationDate(YearMonth.parse(getXMLText(reader)));
+                        case ANALOGSLIST -> medicine.setAnalogs(Arrays.stream(getXMLText(reader).split(" ")).toList());
+                        case VERSIONS -> medicine.setVersions(getXMLVersions(reader));
+                        case REGIONOFPRODUCTION -> {
+                            LocalMedicine localMedicine = (LocalMedicine) medicine;
+                            localMedicine.setRegionOfProduction(getXMLText(reader));
+                        }
+                        case COUNTRYOFPRODUCTION -> {
+                            ImportedMedicine importedMedicine = (ImportedMedicine) medicine;
+                            importedMedicine.setCountryOfProduction(getXMLText(reader));
+                        }
                     }
-                    if (name.equalsIgnoreCase(LOCALMEDICINE.getValue())) {
-                        LocalMedicine localMedicine = buildLocalMedicine(reader);
-                        medicines.add(localMedicine);
-                    }
-                    if (name.equalsIgnoreCase(IMPORTEDMEDICINE.getValue())) {
-                        ImportedMedicine importedMedicine = buildImportedMedicine(reader);
-                        medicines.add(importedMedicine);
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
+
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
+                    if (MEDICINE == endTag || LOCALMEDICINE == endTag || IMPORTEDMEDICINE == endTag) {
+                        return medicine;
                     }
                 }
             }
-        } catch (XMLStreamException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Medicine buildMedicine(XMLStreamReader reader) throws XMLStreamException {
-        Medicine medicine = new Medicine();
-        LocalMedicine localMedicine = new LocalMedicine();
-        medicine.setGroup(Group.getGroup(reader.getAttributeValue(null, GROUP.getValue())));
-        medicine.setIdInPharmacy(reader.getAttributeValue(null, IDINPHARMACY.getValue()));
-        String name;
-        while (reader.hasNext()) {
-            int type = reader.next();
-            switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name.toUpperCase());
-                    switch (tag) {
-                        case NAME -> medicine.setName(getXMLText(reader));
-                        case PRODUCER -> medicine.setProducer(getXMLText(reader));
-                        case EXPIRATIONDATE -> medicine.setExpirationDate(YearMonth.parse(getXMLText(reader)));
-                        case ANALOGSLIST -> medicine.setAnalogs(Arrays.stream(getXMLText(reader).split(" ")).toList());
-                        case VERSIONS -> medicine.setVersions(getXMLVersions(reader));
-                    }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-
-                    name = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
-                    if (MEDICINE == endTag) {
-                        return medicine;
-                    }
-            }
         }
         throw new XMLStreamException("End tag of Medicine is not found");
     }
-
-    private LocalMedicine buildLocalMedicine(XMLStreamReader reader) throws XMLStreamException {
-        LocalMedicine medicine = new LocalMedicine();
-        medicine.setGroup(Group.getGroup(reader.getAttributeValue(null, GROUP.getValue())));
-        medicine.setIdInPharmacy(reader.getAttributeValue(null, IDINPHARMACY.getValue()));
-        String name;
-        while (reader.hasNext()) {
-            int type = reader.next();
-            switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name.toUpperCase());
-                    switch (tag) {
-                        case NAME -> medicine.setName(getXMLText(reader));
-                        case PRODUCER -> medicine.setProducer(getXMLText(reader));
-                        case EXPIRATIONDATE -> medicine.setExpirationDate(YearMonth.parse(getXMLText(reader)));
-                        case ANALOGSLIST -> medicine.setAnalogs(Arrays.stream(getXMLText(reader).split(" ")).toList());
-                        case VERSIONS -> medicine.setVersions(getXMLVersions(reader));
-                        case REGIONOFPRODUCTION -> medicine.setRegionOfProduction(getXMLText(reader));
-                    }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-
-                    name = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
-                    if (LOCALMEDICINE == endTag) {
-                        return medicine;
-                    }
-            }
-        }
-        throw new XMLStreamException("End tag of Medicine is not found");
-    }
-
-    private ImportedMedicine buildImportedMedicine(XMLStreamReader reader) throws XMLStreamException {
-        ImportedMedicine medicine = new ImportedMedicine();
-        medicine.setGroup(Group.getGroup(reader.getAttributeValue(null, GROUP.getValue())));
-        medicine.setIdInPharmacy(reader.getAttributeValue(null, IDINPHARMACY.getValue()));
-        String name;
-        while (reader.hasNext()) {
-            int type = reader.next();
-            switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name.toUpperCase());
-                    switch (tag) {
-                        case NAME -> medicine.setName(getXMLText(reader));
-                        case PRODUCER -> medicine.setProducer(getXMLText(reader));
-                        case EXPIRATIONDATE -> medicine.setExpirationDate(YearMonth.parse(getXMLText(reader)));
-                        case ANALOGSLIST -> medicine.setAnalogs(Arrays.stream(getXMLText(reader).split(" ")).toList());
-                        case VERSIONS -> medicine.setVersions(getXMLVersions(reader));
-                        case COUNTRYOFPRODUCTION -> medicine.setCountryOfProduction(getXMLText(reader));
-                    }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    name = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
-                    if (IMPORTEDMEDICINE == endTag) {
-                        return medicine;
-                    }
-            }
-        }
-        throw new XMLStreamException("End tag of Medicine is not found");
-    }
-
 
     private List<Version> getXMLVersions(XMLStreamReader reader) throws XMLStreamException {
         List<Version> versions = new ArrayList<>();
         int type;
-        String name1;
+        String name;
         while (reader.hasNext()) {
             type = reader.next();
             switch (type) {
                 case XMLStreamConstants.START_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name1.toUpperCase());
+                    name = reader.getLocalName();
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
                     if (VERSION == tag) {
                         Version version = getXMLVersion(reader);
                         versions.add(version);
                     }
                 case XMLStreamConstants.END_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name1.toUpperCase());
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
                     if (VERSIONS == endTag) {
                         return versions;
                     }
@@ -181,26 +126,27 @@ public class MedicineStaxBuilder {
     private Version getXMLVersion(XMLStreamReader reader) throws XMLStreamException {
         Version version = new Version();
         int type;
-        String name1;
+        String name;
         while (reader.hasNext()) {
             type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name1.toUpperCase());
+                case XMLStreamConstants.START_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
                     switch (tag) {
                         case VERSIONOFPRODUCTION -> version.setVersionOfProduction(getXMLText(reader));
                         case CERTIFICATE -> version.setCertificate(getXMLCertificate(reader));
                         case MEDICINEPACKAGE -> version.setMedicinePackage(getXMLMedicinePackage(reader));
                         case DOSAGE -> version.setDosage(getXMLDosage(reader));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name1.toUpperCase());
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
                     if (VERSION == endTag) {
                         return version;
                     }
+                }
             }
         }
         throw new XMLStreamException("End tag of Version is not found");
@@ -209,26 +155,27 @@ public class MedicineStaxBuilder {
     private Certificate getXMLCertificate(XMLStreamReader reader) throws XMLStreamException {
         Certificate certificate = new Certificate();
         int type;
-        String name1;
+        String name;
         while (reader.hasNext()) {
             type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name1.toUpperCase());
+                case XMLStreamConstants.START_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
                     switch (tag) {
                         case NUMBER -> certificate.setNumber(Integer.parseInt(getXMLText(reader)));
                         case ISSUEDATE -> certificate.setIssueDate(YearMonth.parse(getXMLText(reader)));
                         case CERTIFICATEEXPIRATIONDATE -> certificate.setExpirationDate(YearMonth.parse(getXMLText(reader)));
                         case REGISTERINGORGANIZATION -> certificate.setRegisteringOrganization(getXMLText(reader));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name1.toUpperCase());
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
                     if (CERTIFICATE == endTag) {
                         return certificate;
                     }
+                }
             }
         }
         throw new XMLStreamException("End tag of Certificate is not found");
@@ -237,25 +184,26 @@ public class MedicineStaxBuilder {
     private MedicinePackage getXMLMedicinePackage(XMLStreamReader reader) throws XMLStreamException {
         MedicinePackage medicinePackage = new MedicinePackage();
         int type;
-        String name1;
+        String name;
         while (reader.hasNext()) {
             type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name1.toUpperCase());
+                case XMLStreamConstants.START_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
                     switch (tag) {
                         case TYPEOFPACKAGING -> medicinePackage.setTypeOfPackaging(getXMLText(reader));
                         case AMOUNTINPACKAGE -> medicinePackage.setAmountInPackage(Integer.parseInt(getXMLText(reader)));
                         case PRICE -> medicinePackage.setPrice(Double.parseDouble(getXMLText(reader)));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name1.toUpperCase());
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
                     if (MEDICINEPACKAGE == endTag) {
                         return medicinePackage;
                     }
+                }
             }
         }
         throw new XMLStreamException("End tag of MedicinePackage is not found");
@@ -264,29 +212,29 @@ public class MedicineStaxBuilder {
     private Dosage getXMLDosage(XMLStreamReader reader) throws XMLStreamException {
         Dosage dosage = new Dosage();
         int type;
-        String name1;
+        String name;
         while (reader.hasNext()) {
             type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag tag = valueOf(name1.toUpperCase());
+                case XMLStreamConstants.START_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag tag = valueOf(name.toUpperCase());
                     switch (tag) {
                         case DRUGDOSAGE -> dosage.setDrugDosage(Integer.parseInt(getXMLText(reader)));
                         case FREQUENCYOFADMISSION -> dosage.setFrequencyOfAdmission(Integer.parseInt(getXMLText(reader)));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
-                    name1 = reader.getLocalName();
-                    MedicineXMLTag endTag = valueOf(name1.toUpperCase());
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
+                    name = reader.getLocalName();
+                    MedicineXMLTag endTag = valueOf(name.toUpperCase());
                     if (DOSAGE == endTag) {
                         return dosage;
                     }
+                }
             }
         }
         throw new XMLStreamException("End tag of Dosage is not found");
     }
-
 
     private String getXMLText(XMLStreamReader reader) throws XMLStreamException {
         String text = null;

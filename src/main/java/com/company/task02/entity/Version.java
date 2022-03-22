@@ -56,7 +56,7 @@ public class Version {
         return new StringJoiner(", ", Version.class.getSimpleName() + "[", "]")
                 .add("version='" + versionOfProduction + "'")
                 .add("certificate=" + certificate)
-                .add("aMedicinePackage=" + medicinePackage)
+                .add("MedicinePackage=" + medicinePackage)
                 .add("dosage=" + dosage)
                 .toString();
     }

@@ -86,4 +86,32 @@ public class Medicine {
                 .add("versions=" + versions)
                 .toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Medicine)) return false;
+
+        Medicine medicine = (Medicine) o;
+
+        if (!getIdInPharmacy().equals(medicine.getIdInPharmacy())) return false;
+        if (!getName().equals(medicine.getName())) return false;
+        if (!getProducer().equals(medicine.getProducer())) return false;
+        if (getGroup() != medicine.getGroup()) return false;
+        if (!getExpirationDate().equals(medicine.getExpirationDate())) return false;
+        if (!getAnalogs().equals(medicine.getAnalogs())) return false;
+        return getVersions().equals(medicine.getVersions());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getIdInPharmacy().hashCode();
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + getProducer().hashCode();
+        result = 31 * result + getGroup().hashCode();
+        result = 31 * result + getExpirationDate().hashCode();
+        result = 31 * result + getAnalogs().hashCode();
+        result = 31 * result + getVersions().hashCode();
+        return result;
+    }
 }

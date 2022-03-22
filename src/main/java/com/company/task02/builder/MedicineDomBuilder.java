@@ -8,7 +8,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import com.company.task02.builder.tegs.MedicineXMLTag;
 import com.company.task02.entity.*;
+import com.company.task02.validator.XmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -35,68 +37,62 @@ public class MedicineDomBuilder {
     }
 
     public void buildSetMedicine(String filename) {
-        Document document;
-        try {
-            document = documentBuilder.parse(new File(filename));
-            document.getDocumentElement().normalize();
-            Element root = document.getDocumentElement();
-            NodeList medList = root.getElementsByTagName(MedicineXMLTag.MEDICINE.getValue());
-            NodeList localMedList = root.getElementsByTagName(MedicineXMLTag.LOCALMEDICINE.getValue());
-            NodeList importedMedList = root.getElementsByTagName(MedicineXMLTag.IMPORTEDMEDICINE.getValue());
-            for (int i = 0; i < medList.getLength(); i++) {
-                Element medElement = (Element) medList.item(i);
-                Medicine medicine = buildMedicine(medElement);
-                medicineSet.add(medicine);
+        if (XmlValidator.xmlValidator()) {
+            Document document;
+            try {
+                document = documentBuilder.parse(new File(filename));
+                document.getDocumentElement().normalize();
+                Element root = document.getDocumentElement();
+                NodeList medList = root.getElementsByTagName(MedicineXMLTag.MEDICINE.getValue());
+                NodeList localMedList = root.getElementsByTagName(MedicineXMLTag.LOCALMEDICINE.getValue());
+                NodeList importedMedList = root.getElementsByTagName(MedicineXMLTag.IMPORTEDMEDICINE.getValue());
+                for (int i = 0; i < medList.getLength(); i++) {
+                    Element medElement = (Element) medList.item(i);
+                    Medicine medicine = buildMedicine(medElement);
+                    medicineSet.add(medicine);
+                }
+                for (int i = 0; i < localMedList.getLength(); i++) {
+                    Element medElement = (Element) localMedList.item(i);
+                    LocalMedicine medicine = buildLocalMedicine(medElement);
+                    medicineSet.add(medicine);
+                }
+                for (int i = 0; i < importedMedList.getLength(); i++) {
+                    Element medElement = (Element) importedMedList.item(i);
+                    ImportedMedicine medicine = buildImportedMedicine(medElement);
+                    medicineSet.add(medicine);
+                }
+            } catch (IOException | SAXException e) {
+                e.printStackTrace();
             }
-            for (int i = 0; i < localMedList.getLength(); i++) {
-                Element medElement = (Element) localMedList.item(i);
-                LocalMedicine medicine = buildLocalMedicine(medElement);
-                medicineSet.add(medicine);
-            }
-            for (int i = 0; i < importedMedList.getLength(); i++) {
-                Element medElement = (Element) importedMedList.item(i);
-                ImportedMedicine medicine = buildImportedMedicine(medElement);
-                medicineSet.add(medicine);
-            }
-        } catch (IOException | SAXException e) {
-            e.printStackTrace();
         }
     }
 
-    private Medicine buildMedicine( Element medicineElement) {
+    private void buildCommonParam(Medicine medicine, Element element) {
+        medicine.setGroup(Group.valueOf(element.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
+        medicine.setIdInPharmacy(element.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
+        medicine.setName(getElementTextContent(element, MedicineXMLTag.NAME.getValue()));
+        medicine.setProducer(getElementTextContent(element, MedicineXMLTag.PRODUCER.getValue()));
+        medicine.setExpirationDate(getElementYearMonthContent(element, MedicineXMLTag.EXPIRATIONDATE.getValue()));
+        medicine.setAnalogs(getAnalogsContext(element));
+        medicine.setVersions(buildVersionsList(element));
+    }
+
+    private Medicine buildMedicine(Element medicineElement) {
         Medicine medicine = new Medicine();
-        medicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
-        medicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
-        medicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
-        medicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
-        medicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
-        medicine.setAnalogs(getAnalogsContext(medicineElement));
-        medicine.setVersions(buildVersionsList(medicineElement));
+        buildCommonParam(medicine, medicineElement);
         return medicine;
     }
 
-    private LocalMedicine buildLocalMedicine (Element medicineElement){
+    private LocalMedicine buildLocalMedicine(Element medicineElement) {
         LocalMedicine localMedicine = new LocalMedicine();
-        localMedicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
-        localMedicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
-        localMedicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
-        localMedicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
-        localMedicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
-        localMedicine.setAnalogs(getAnalogsContext(medicineElement));
-        localMedicine.setVersions(buildVersionsList(medicineElement));
+        buildCommonParam(localMedicine, medicineElement);
         localMedicine.setRegionOfProduction(getElementTextContent(medicineElement, MedicineXMLTag.REGIONOFPRODUCTION.getValue()));
         return localMedicine;
     }
 
-    private ImportedMedicine buildImportedMedicine (Element medicineElement){
+    private ImportedMedicine buildImportedMedicine(Element medicineElement) {
         ImportedMedicine importedMedicine = new ImportedMedicine();
-        importedMedicine.setGroup(Group.valueOf(medicineElement.getAttribute(MedicineXMLTag.GROUP.getValue()).toUpperCase(Locale.ROOT)));
-        importedMedicine.setIdInPharmacy(medicineElement.getAttribute(MedicineXMLTag.IDINPHARMACY.getValue()));
-        importedMedicine.setName(getElementTextContent(medicineElement, MedicineXMLTag.NAME.getValue()));
-        importedMedicine.setProducer(getElementTextContent(medicineElement, MedicineXMLTag.PRODUCER.getValue()));
-        importedMedicine.setExpirationDate(getElementYearMonthContent(medicineElement, MedicineXMLTag.EXPIRATIONDATE.getValue()));
-        importedMedicine.setAnalogs(getAnalogsContext(medicineElement));
-        importedMedicine.setVersions(buildVersionsList(medicineElement));
+        buildCommonParam(importedMedicine, medicineElement);
         importedMedicine.setCountryOfProduction(getElementTextContent(medicineElement, MedicineXMLTag.COUNTRYOFPRODUCTION.getValue()));
         return importedMedicine;
     }

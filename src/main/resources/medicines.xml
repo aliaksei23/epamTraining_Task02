@@ -146,6 +146,141 @@
         </versions>
         <countryOfProduction>ForeignerCountry</countryOfProduction>
     </importedMedicine>
+    <localMedicine group="Painkillers" idInPharmacy="lm05">
+        <name>Flemoxin</name>
+        <producer>LocalOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>Tsiprolet Avelox Suprax</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>05</number>
+                    <issueDate>2021-10</issueDate>
+                    <certificateExpirationDate>2028-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal1</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>50</amountInPackage>
+                    <price>27.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion</regionOfProduction>
+    </localMedicine>
+    <localMedicine group="Antiviral" idInPharmacy="lm06">
+        <name>Arbidol Maximum</name>
+        <producer>LocalOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>Arbidol Tamiflu</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Capsules</versionOfProduction>
+                <certificate>
+                    <number>06</number>
+                    <issueDate>2020-11</issueDate>
+                    <certificateExpirationDate>2027-01</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal2</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>40</amountInPackage>
+                    <price>25</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion</regionOfProduction>
+    </localMedicine>
+    <importedMedicine group="Antiviral" idInPharmacy="im07">
+        <name>Amiksin</name>
+        <producer>ForeignerOrganization</producer>
+        <expirationDate>2025-05</expirationDate>
+        <analogsList>Ingavirin Kagocel</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>07</number>
+                    <issueDate>2019-10</issueDate>
+                    <certificateExpirationDate>2024-05</certificateExpirationDate>
+                    <registeringOrganization>OrganizationImported1</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>tablets</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>40.5</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>125</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry</countryOfProduction>
+    </importedMedicine>
+    <importedMedicine group="Antihistamines" idInPharmacy="im08">
+        <name>Suprastin</name>
+        <producer>ForeignerOrganization</producer>
+        <expirationDate>2027-07</expirationDate>
+        <analogsList>Tsetrin Nasonex</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>08</number>
+                    <issueDate>2017-07</issueDate>
+                    <certificateExpirationDate>2025-05</certificateExpirationDate>
+                    <registeringOrganization>OrganizationImported2</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>tablets</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>25.5</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry</countryOfProduction>
+    </importedMedicine>
+    <localMedicine group="Antihistamines" idInPharmacy="lm08">
+        <name>Erius</name>
+        <producer>LocalOrganization5</producer>
+        <expirationDate>2025-05</expirationDate>
+        <analogsList>Claritin Kestin</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Capsules</versionOfProduction>
+                <certificate>
+                    <number>08</number>
+                    <issueDate>2015-05</issueDate>
+                    <certificateExpirationDate>2022-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal2</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>25.9</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion</regionOfProduction>
+    </localMedicine>
 </medicines>
 
 

@@ -14,24 +14,22 @@ import java.io.IOException;
 
 public class XmlValidator {
 
-    public static void xmlValidator() {
+    public static boolean xmlValidator() {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName = "E:\\alex\\epamTraining\\epamTraining_Task02\\src\\main\\resources\\medicines.xml";
-        String schemaName = "E:\\alex\\epamTraining\\epamTraining_Task02\\src\\main\\resources\\medicines.xsd";
+        String fileName = "src/main/resources/medicines.xml";
+        String schemaName = "src/main/resources/medicines.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
-            // schema creation
             Schema schema = factory.newSchema(schemaLocation);
-            // creating a schema-based validator
             Validator validator = schema.newValidator();
             Source source = new StreamSource(fileName);
-            // document check
             validator.setErrorHandler(new MedicinsErrorHandler());
             validator.validate(source);
+            return true;
         } catch (SAXException | IOException e) {
             System.err.println(fileName + " is not correct or valid");
         }
+        return false;
     }
-
 }

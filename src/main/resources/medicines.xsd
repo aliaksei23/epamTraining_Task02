@@ -30,7 +30,7 @@
                 </complexType>
             </element>
         </sequence>
-        <attribute name="group" use="required">
+        <attribute name="group" use="optional" default="Group required">
             <simpleType>
                 <restriction base="string">
                     <enumeration value="Antibiotics"/>
@@ -38,10 +38,11 @@
                     <enumeration value="Vitamins"/>
                     <enumeration value="Antiviral"/>
                     <enumeration value="Antihistamines"/>
+                    <enumeration value="Group required"/>
                 </restriction>
             </simpleType>
         </attribute>
-        <attribute name="idInPharmacy" type="ID" default="Q00"/>
+        <attribute name="idInPharmacy" type="ID" use="required"/>
     </complexType>
 
     <complexType name="Version">

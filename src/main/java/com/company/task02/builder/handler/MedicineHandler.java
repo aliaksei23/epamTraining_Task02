@@ -1,5 +1,6 @@
-package com.company.task02.builder;
+package com.company.task02.builder.handler;
 
+import com.company.task02.builder.tegs.MedicineXMLTag;
 import com.company.task02.entity.*;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
@@ -7,7 +8,7 @@ import org.xml.sax.Attributes;
 import java.time.YearMonth;
 import java.util.*;
 
-import static com.company.task02.builder.MedicineXMLTag.*;
+import static com.company.task02.builder.tegs.MedicineXMLTag.*;
 
 public class MedicineHandler extends DefaultHandler {
 

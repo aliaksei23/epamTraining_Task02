@@ -1,4 +1,4 @@
-package com.company.task02.builder;
+package com.company.task02.builder.tegs;
 
 public enum MedicineXMLTag {
     MEDICINES("medicines"),
