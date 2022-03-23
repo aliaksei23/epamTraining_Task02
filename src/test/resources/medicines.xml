@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medicines xmlns="http://www.example.org/medicines"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.example.org/medicines  medicines.xsd">
+
+    <medicine group="Painkillers" idInPharmacy="m01">
+        <name>Analgin</name>
+        <producer>BelMed</producer>
+        <expirationDate>2050-05</expirationDate>
+        <analogsList>Xefocam Ketonal</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Tablets</versionOfProduction>
+                <certificate>
+                    <number>123</number>
+                    <issueDate>2020-05</issueDate>
+                    <certificateExpirationDate>2024-08</certificateExpirationDate>
+                    <registeringOrganization>Organization1</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>Plastins</typeOfPackaging>
+                    <amountInPackage>20</amountInPackage>
+                    <price>1.4</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>3</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+    <importedMedicine group="Vitamins" idInPharmacy="im03">
+        <name>AlfaVit Energy</name>
+        <producer>ForeignerOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>Biorhythm Makrovit</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>879</number>
+                    <issueDate>2021-08</issueDate>
+                    <certificateExpirationDate>2028-05</certificateExpirationDate>
+                    <registeringOrganization>Organization4</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>50</amountInPackage>
+                    <price>12.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>150</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry</countryOfProduction>
+    </importedMedicine>
+    <localMedicine group="Antiviral" idInPharmacy="lm06">
+        <name>Arbidol Maximum</name>
+        <producer>LocalOrganization</producer>
+        <expirationDate>2027-08</expirationDate>
+        <analogsList>Arbidol Tamiflu</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Capsules</versionOfProduction>
+                <certificate>
+                    <number>06</number>
+                    <issueDate>2020-11</issueDate>
+                    <certificateExpirationDate>2027-01</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal2</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>40</amountInPackage>
+                    <price>25</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion</regionOfProduction>
+    </localMedicine>
+</medicines>
+
+

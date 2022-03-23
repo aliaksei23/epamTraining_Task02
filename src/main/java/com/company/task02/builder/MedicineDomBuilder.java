@@ -124,7 +124,7 @@ public class MedicineDomBuilder {
         Certificate certificate = new Certificate();
         certificate.setNumber(getElementIntContent(certificateElement, MedicineXMLTag.NUMBER.getValue()));
         certificate.setIssueDate(getElementYearMonthContent(certificateElement, MedicineXMLTag.ISSUEDATE.getValue()));
-        certificate.setIssueDate(getElementYearMonthContent(certificateElement, MedicineXMLTag.CERTIFICATEEXPIRATIONDATE.getValue()));
+        certificate.setExpirationDate(getElementYearMonthContent(certificateElement, MedicineXMLTag.CERTIFICATEEXPIRATIONDATE.getValue()));
         certificate.setRegisteringOrganization(getElementTextContent(certificateElement, MedicineXMLTag.REGISTERINGORGANIZATION.getValue()));
         return certificate;
     }

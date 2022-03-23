@@ -281,6 +281,222 @@
         </versions>
         <regionOfProduction>LocalRegion</regionOfProduction>
     </localMedicine>
+    <importedMedicine group="Antibiotics" idInPharmacy="im09">
+        <name>Amoxicillin</name>
+        <producer>ForeignerOrganization5</producer>
+        <expirationDate>2028-08</expirationDate>
+        <analogsList>Levofloxacin Cefixime</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Drops</versionOfProduction>
+                <certificate>
+                    <number>09</number>
+                    <issueDate>2017-07</issueDate>
+                    <certificateExpirationDate>2027-07</certificateExpirationDate>
+                    <registeringOrganization>OrganizationImported7</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>100</amountInPackage>
+                    <price>18.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>250</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry5</countryOfProduction>
+    </importedMedicine>
+    <localMedicine group="Antibiotics" idInPharmacy="lm10">
+        <name>Levofloxacin</name>
+        <producer>ForeignerOrganization5</producer>
+        <expirationDate>2025-08</expirationDate>
+        <analogsList>Amoxicillin Cefixime</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Drops</versionOfProduction>
+                <certificate>
+                    <number>10</number>
+                    <issueDate>2015-07</issueDate>
+                    <certificateExpirationDate>2024-07</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal7</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>200</amountInPackage>
+                    <price>18.8</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>150</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion4</regionOfProduction>
+    </localMedicine>
+    <localMedicine group="Painkillers" idInPharmacy="lm11">
+        <name>Nolodatac</name>
+        <producer>LocalOrganization3</producer>
+        <expirationDate>2025-05</expirationDate>
+        <analogsList>Migraine Analgin Aveksima</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>11</number>
+                    <issueDate>2018-10</issueDate>
+                    <certificateExpirationDate>2028-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal5</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>200</amountInPackage>
+                    <price>13.3</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion5</regionOfProduction>
+    </localMedicine>
+    <localMedicine group="Painkillers" idInPharmacy="lm12">
+        <name>Next Uno Express</name>
+        <producer>LocalOrganization1</producer>
+        <expirationDate>2025-05</expirationDate>
+        <analogsList>Dialrapid Dexonal</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>12</number>
+                    <issueDate>2017-07</issueDate>
+                    <certificateExpirationDate>2027-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal4</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>50</amountInPackage>
+                    <price>13</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>200</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion7</regionOfProduction>
+    </localMedicine>
+    <localMedicine group="Painkillers" idInPharmacy="lm13">
+        <name>Aspirin Express</name>
+        <producer>LocalOrganization4</producer>
+        <expirationDate>2025-05</expirationDate>
+        <analogsList>Nurofen Long</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>13</number>
+                    <issueDate>2017-07</issueDate>
+                    <certificateExpirationDate>2027-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal7</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>30</amountInPackage>
+                    <price>24</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion5</regionOfProduction>
+    </localMedicine>
+    <localMedicine group="Painkillers" idInPharmacy="lm14">
+        <name>Citramarine</name>
+        <producer>LocalOrganization9</producer>
+        <expirationDate>2024-05</expirationDate>
+        <analogsList>Ibuklin Junior Maxicold</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Capsules</versionOfProduction>
+                <certificate>
+                    <number>14</number>
+                    <issueDate>2014-04</issueDate>
+                    <certificateExpirationDate>2024-11</certificateExpirationDate>
+                    <registeringOrganization>OrganizationLocal4</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>vial</typeOfPackaging>
+                    <amountInPackage>40</amountInPackage>
+                    <price>44</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>2</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <regionOfProduction>LocalRegion4</regionOfProduction>
+    </localMedicine>
+    <importedMedicine group="Antibiotics" idInPharmacy="im15">
+        <name>IBUKLIN</name>
+        <producer>ForeignerOrganization5</producer>
+        <expirationDate>2025-08</expirationDate>
+        <analogsList>DICLOFENAC DOLOBENE</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>15</number>
+                    <issueDate>2015-07</issueDate>
+                    <certificateExpirationDate>2025-07</certificateExpirationDate>
+                    <registeringOrganization>OrganizationImported5</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>plate</typeOfPackaging>
+                    <amountInPackage>400</amountInPackage>
+                    <price>28</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry5</countryOfProduction>
+    </importedMedicine>
+    <importedMedicine group="Antibiotics" idInPharmacy="im16">
+        <name>Nurofen Long</name>
+        <producer>ForeignerOrganization5</producer>
+        <expirationDate>2025-08</expirationDate>
+        <analogsList>Pentalgin Nalgezin Spazmalgon</analogsList>
+        <versions>
+            <version>
+                <versionOfProduction>Pills</versionOfProduction>
+                <certificate>
+                    <number>16</number>
+                    <issueDate>2016-06</issueDate>
+                    <certificateExpirationDate>2026-06</certificateExpirationDate>
+                    <registeringOrganization>OrganizationImported6</registeringOrganization>
+                </certificate>
+                <medicinePackage>
+                    <typeOfPackaging>plate</typeOfPackaging>
+                    <amountInPackage>500</amountInPackage>
+                    <price>16</price>
+                </medicinePackage>
+                <dosage>
+                    <drugDosage>400</drugDosage>
+                    <frequencyOfAdmission>1</frequencyOfAdmission>
+                </dosage>
+            </version>
+        </versions>
+        <countryOfProduction>ForeignerCountry6</countryOfProduction>
+    </importedMedicine>
 </medicines>
 
 

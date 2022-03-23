@@ -26,4 +26,22 @@ public class ImportedMedicine extends Medicine {
                 .add("countryOfProduction='" + countryOfProduction + "'")
                 .toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ImportedMedicine)) return false;
+        if (!super.equals(o)) return false;
+
+        ImportedMedicine that = (ImportedMedicine) o;
+
+        return getCountryOfProduction().equals(that.getCountryOfProduction());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + getCountryOfProduction().hashCode();
+        return result;
+    }
 }

@@ -25,4 +25,22 @@ public class LocalMedicine extends Medicine {
                 .add("regionOfProduction='" + regionOfProduction + "'")
                 .toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LocalMedicine)) return false;
+        if (!super.equals(o)) return false;
+
+        LocalMedicine that = (LocalMedicine) o;
+
+        return getRegionOfProduction().equals(that.getRegionOfProduction());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + getRegionOfProduction().hashCode();
+        return result;
+    }
 }

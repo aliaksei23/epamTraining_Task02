@@ -5,7 +5,7 @@ public enum Group {
     ANTIBIOTICS("Antibiotics"),
     PAINKILLERS("Painkillers"),
     VITAMINS("Vitamins"),
-    Antiviral("Antiviral"),
+    ANTIVIRAL("Antiviral"),
     ANTIHISTAMINES("Antihistamines"),
     GROUP_REQUIRED ("Group required");
 

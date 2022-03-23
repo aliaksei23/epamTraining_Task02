@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/medicines"
+        xmlns:tns="http://www.example.org/medicines"
+        elementFormDefault="qualified">
+
+    <element name="medicines">
+        <complexType>
+            <sequence>
+                <element ref="tns:medicine" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="medicine" type="tns:Medicine"/>
+    <element name="localMedicine" type="tns:localMedicine" substitutionGroup="tns:medicine"/>
+    <element name="importedMedicine" type="tns:importedMedicine" substitutionGroup="tns:medicine"/>
+
+    <complexType name="Medicine">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="producer" type="string"/>
+            <element name="expirationDate" type="gYearMonth"/>
+            <element name="analogsList" type="tns:stringList"/>
+            <element name="versions">
+                <complexType>
+                    <sequence>
+                        <element name="version" type="tns:Version" maxOccurs="10"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </sequence>
+        <attribute name="group" use="optional" default="Group required">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="Antibiotics"/>
+                    <enumeration value="Painkillers"/>
+                    <enumeration value="Vitamins"/>
+                    <enumeration value="Antiviral"/>
+                    <enumeration value="Antihistamines"/>
+                    <enumeration value="Group required"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="idInPharmacy" type="ID" use="required"/>
+    </complexType>
+
+    <complexType name="Version">
+        <sequence>
+            <element name="versionOfProduction" type="string"/>
+            <element name="certificate" type="tns:Certificate"/>
+            <element name="medicinePackage" type="tns:MedicinePackage"/>
+            <element name="dosage" type="tns:Dosage"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Certificate">
+        <sequence>
+            <element name="number" type="int"/>
+            <element name="issueDate" type="gYearMonth"/>
+            <element name="certificateExpirationDate" type="gYearMonth"/>
+            <element name="registeringOrganization" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="MedicinePackage">
+        <sequence>
+            <element name="typeOfPackaging" type="string"/>
+            <element name="amountInPackage" type="int"/>
+            <element name="price" type="double"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Dosage">
+        <sequence>
+            <element name="drugDosage" type="int"/>
+            <element name="frequencyOfAdmission" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="localMedicine">
+        <complexContent>
+            <extension base="tns:Medicine">
+                <sequence>
+                    <element name="regionOfProduction" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="importedMedicine">
+        <complexContent>
+            <extension base="tns:Medicine">
+                <sequence>
+                    <element name="countryOfProduction" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="dateFormat">
+        <restriction base="gYearMonth">
+            <pattern value="2[0-9][0-9][0-9]-(0[1-9])|(1[0-2])"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="stringList">
+        <list itemType="string"/>
+    </simpleType>
+</schema>
